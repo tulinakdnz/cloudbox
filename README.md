@@ -1,4 +1,4 @@
-# Cloudbox — Multi-Environment Kubernetes Platform
+o# Cloudbox — Multi-Environment Kubernetes Platform
 
 ![CI](https://github.com/tulinakdnz/cloudbox/actions/workflows/ci.yml/badge.svg)
 ![Terraform](https://img.shields.io/badge/Terraform-1.7.5-purple)
