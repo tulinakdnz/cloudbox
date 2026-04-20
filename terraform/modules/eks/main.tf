@@ -4,9 +4,9 @@ terraform {
   }
 }
 
-variable "cluster_name"  { type = string }
-variable "environment"   { type = string }
-variable "node_count"    { type = number }
+variable "cluster_name" { type = string }
+variable "environment" { type = string }
+variable "node_count" { type = number }
 variable "instance_type" { type = string }
 
 module "eks" {
@@ -32,5 +32,5 @@ module "eks" {
   }
 }
 
-output "cluster_name"     { value = module.eks.cluster_name }
+output "cluster_name" { value = module.eks.cluster_name }
 output "cluster_endpoint" { value = module.eks.cluster_endpoint }
