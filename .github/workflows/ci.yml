@@ -1,0 +1,29 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  terraform-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.7.5"
+      - run: terraform fmt -check -recursive terraform/
+      - run: |
+          cd terraform/environments/dev
+          terraform init -backend=false
+          terraform validate
+
+  kubernetes-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          curl -L https://github.com/yannh/kubeconform/releases/latest/download/kubeconform-linux-amd64.tar.gz | tar xz
+          ./kubeconform kubernetes/base/
